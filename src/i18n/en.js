@@ -1,6 +1,6 @@
 const i18n = {
   HOME: {
-    WELCOM_HEADER: 'Good Morning!',
+    WELCOME_HEADER: 'Good Morning!',
     START: 'START'
   },
 };
