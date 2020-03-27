@@ -12,7 +12,7 @@ const HomeView = () => {
 
   const startTimer = () => {
     setInterval(() => {
-      setState((prevState) => ({ ...prevState, time: prevState.time + 1000 }));
+      setState((prevState) => ({ ...prevState, time: prevState.paused ? prevState.time : prevState.time + 1000 }));
     }, 1000);
   };
 
