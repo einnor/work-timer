@@ -7,13 +7,18 @@ import styles from './HomeViewStyles';
 const HomeView = () => {
   const [state, setState] = useState({
     time: 0,
+    paused: false,
   });
 
   const startTimer = () => {
     setInterval(() => {
       setState((prevState) => ({ ...prevState, time: prevState.time + 1000 }));
     }, 1000);
-  }
+  };
+
+  const pauseTimer = () => {
+    setState((prevState) => ({ ...prevState, paused: !prevState.paused }));
+  };
 
   const renderStartButton = () => {
     return (
@@ -25,7 +30,7 @@ const HomeView = () => {
 
   const renderRunningTimer = () => {
     return (
-      <TouchableOpacity onPress={() => {}} style={styles.mainActionButton}>
+      <TouchableOpacity onPress={pauseTimer} style={styles.mainActionButton}>
         <Text style={styles.mainActionButtonText}>{state.time}</Text>
       </TouchableOpacity>
     );
