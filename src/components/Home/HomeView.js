@@ -9,13 +9,15 @@ const HomeView = () => {
     time: 0,
   });
 
+  const startTimer = () => {
+    setInterval(() => {
+      setState((prevState) => ({ ...prevState, time: prevState.time + 1000 }));
+    }, 1000);
+  }
+
   const renderStartButton = () => {
     return (
-      <TouchableOpacity onPress={() => {
-        setInterval(() => {
-          setState((prevState) => ({ ...prevState, time: prevState.time + 1000 }));
-        }, 1000);
-      }} style={styles.mainActionButton}>
+      <TouchableOpacity onPress={startTimer} style={styles.mainActionButton}>
         <Text style={styles.mainActionButtonText}>{i18n.HOME.START}</Text>
       </TouchableOpacity>
     );
