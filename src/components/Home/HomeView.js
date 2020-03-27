@@ -12,10 +12,9 @@ const HomeView = () => {
   const renderStartButton = () => {
     return (
       <TouchableOpacity onPress={() => {
-        console.log(state.time, '');
         setInterval(() => {
           console.log(state.time);
-          setState({ time: state.time + 1000 });
+          setState((prevState) => ({ ...prevState, time: prevState.time + 1000 }));
         }, 1000);
       }} style={styles.mainActionButton}>
         <Text style={styles.mainActionButtonText}>{i18n.HOME.START}</Text>
