@@ -20,9 +20,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#00cd5e',
   },
   mainActionButtonText: {
-    fontSize: 60,
+    fontSize: 50,
     color: '#ffffff',
     fontWeight: 'bold',
+  },
+  mainActionButtonPauseText: {
+    fontSize: 24,
   }
 });
 

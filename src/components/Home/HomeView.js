@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import moment from 'moment';
 
 import i18n from '../../i18n/en';
 import styles from './HomeViewStyles';
@@ -31,7 +32,8 @@ const HomeView = () => {
   const renderRunningTimer = () => {
     return (
       <TouchableOpacity onPress={pauseTimer} style={styles.mainActionButton}>
-        <Text style={styles.mainActionButtonText}>{state.time}</Text>
+        <Text style={styles.mainActionButtonText}>{moment.utc(state.time).format('HH:mm:ss')}</Text>
+        <Text style={[styles.mainActionButtonText, styles.mainActionButtonPauseText]}>{i18n.HOME.PAUSE}</Text>
       </TouchableOpacity>
     );
   };
