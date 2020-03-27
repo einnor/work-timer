@@ -13,7 +13,6 @@ const HomeView = () => {
     return (
       <TouchableOpacity onPress={() => {
         setInterval(() => {
-          console.log(state.time);
           setState((prevState) => ({ ...prevState, time: prevState.time + 1000 }));
         }, 1000);
       }} style={styles.mainActionButton}>
