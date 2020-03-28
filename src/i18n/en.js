@@ -3,6 +3,7 @@ const i18n = {
     WELCOME_HEADER: 'Good Morning!',
     START: 'START',
     PAUSE: 'PAUSE',
+    TIME_FORMAT: 'HH:mm:ss',
   },
 };
 
