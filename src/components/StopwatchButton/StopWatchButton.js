@@ -10,7 +10,7 @@ const StopwatchButton = ({ time, onStart, onPause }) => {
   if (time > 0) {
     return (
       <TouchableOpacity onPress={onPause} style={styles.mainActionButton}>
-        <Text style={styles.mainActionButtonText}>{moment.utc(time).format(i18n.HOME.TIME_FORMAT)}</Text>
+        <Text style={styles.mainActionButtonText}>{moment.utc(time).format(i18n.TIME_FORMAT)}</Text>
         <Text style={[styles.mainActionButtonText, styles.mainActionButtonPauseText]}>{i18n.HOME.PAUSE}</Text>
       </TouchableOpacity>
     );
