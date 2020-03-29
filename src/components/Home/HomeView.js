@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, AppState } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import i18n from '../../i18n/en';
 import styles from './HomeViewStyles';
@@ -11,14 +12,24 @@ const HomeView = () => {
     paused: false,
   });
 
-  const handleAppStateChange = (nextAppState) => {
+  const handleAppStateChange = async (nextAppState) => {
     console.log(nextAppState);
+    const now = new Date().getTime();
+    const { time } = state;
+    const readTime = await AsyncStorage.getItem('@time');
+    const readtAppStateChangedTimestamp = await AsyncStorage.getItem('@appStateChangedTimestamp');
+
+    const timeDifference = now - parseInt(readtAppStateChangedTimestamp, 10);
+    const newTime = parseInt(readTime, 10) + timeDifference;
+
+    await AsyncStorage.setItem('@time', time);
+    await AsyncStorage.setItem('@appStateChangedTimestamp', now);
   }
 
   useEffect(() => {
-    AppState.addEventListener('change', handleAppStateChange);
+    AppState.addEventListener('appStateChange', handleAppStateChange);
 
-    return () => AppState.removeEventListener('change', handleAppStateChange);
+    return () => AppState.removeEventListener('appStateChange', handleAppStateChange);
   }, []);
 
   const startTimer = () => {
