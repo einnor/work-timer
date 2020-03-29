@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import BottomNavigation from './src/components/BottomNavigation/BottomNavigation';
 
+
 const App = () => {
   return (
     <Fragment>
