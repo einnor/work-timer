@@ -65,6 +65,7 @@ const HomeView = () => {
       <View style={{ flex: 2 }}>
         <StopwatchButton
           time={state.time}
+          paused={state.paused}
           onStart={startTimer}
           onPause={pauseTimer}
         />

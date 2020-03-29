@@ -5,13 +5,13 @@ import moment from 'moment';
 import i18n from '../../i18n/en';
 import styles from './StopwatchButtonStyles';
 
-const StopwatchButton = ({ time, onStart, onPause }) => {
+const StopwatchButton = ({ time, paused, onStart, onPause }) => {
 
   if (time > 0) {
     return (
       <TouchableOpacity onPress={onPause} style={styles.mainActionButton}>
         <Text style={styles.mainActionButtonText}>{moment.utc(time).format(i18n.TIME_FORMAT)}</Text>
-        <Text style={[styles.mainActionButtonText, styles.mainActionButtonPauseText]}>{i18n.HOME.PAUSE}</Text>
+        <Text style={[styles.mainActionButtonText, styles.mainActionButtonPauseText]}>{paused ? i18n.HOME.START : i18n.HOME.PAUSE}</Text>
       </TouchableOpacity>
     );
   }
