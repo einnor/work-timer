@@ -26,8 +26,8 @@ const HomeView = () => {
       setState((prevState) => ({ ...prevState, time: newTime }));
     }
 
-    await AsyncStorage.setItem('@time', time);
-    await AsyncStorage.setItem('@appStateChangedTimestamp', now);
+    await AsyncStorage.setItem('@time', time.toString());
+    await AsyncStorage.setItem('@appStateChangedTimestamp', now.toString());
   }
 
   useEffect(() => {
