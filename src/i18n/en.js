@@ -4,6 +4,7 @@ const i18n = {
     WELCOME_HEADER: 'Good Morning!',
     START: 'START',
     PAUSE: 'PAUSE',
+    PAUSED: 'PAUSED',
   },
 };
 
