@@ -11,6 +11,11 @@ const styles = StyleSheet.create({
     color: '#000000',
     marginTop: 50,
   },
+  buttonView: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   finishButton: {
     textTransform: 'uppercase',
     fontSize: 40,

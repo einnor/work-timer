@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, AppState, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -12,7 +12,7 @@ const HomeView = () => {
     paused: false,
   });
 
-  let intervalId;
+  let intervalId = useRef(null);
 
   const handleAppStateChange = async (nextAppState) => {
     const now = new Date().getTime();
@@ -25,10 +25,8 @@ const HomeView = () => {
 
     if (nextAppState === 'active') {
       const isPaused = JSON.parse(await AsyncStorage.getItem('@isPaused'));
-      console.log(isPaused);
       if (!isPaused) {
         setState((prevState) => ({ ...prevState, time: newTime }));
-        startTimer();
       } else {
         await AsyncStorage.setItem('@isPaused', JSON.stringify(paused));
         await AsyncStorage.setItem('@time', time.toString());
@@ -41,36 +39,52 @@ const HomeView = () => {
     AppState.addEventListener('change', handleAppStateChange);
 
     return () => AppState.removeEventListener('change', handleAppStateChange);
-  }, [handleAppStateChange]);
+  }, []);
 
   const startTimer = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
+    clearTimer();
 
-    intervalId = setInterval(() => {
+    intervalId.current = setInterval(() => {
       setState((prevState) => ({ ...prevState, time: prevState.paused ? prevState.time : prevState.time + 1000 }));
     }, 1000);
   };
 
   const pauseTimer = () => {
+    clearTimer();
+
     setState((prevState) => ({ ...prevState, paused: !prevState.paused }));
   };
+
+  const reset = () => {
+    clearTimer();
+    setState((prevState) => ({ ...prevState, time: 0, paused: false }));
+  };
+
+  const clearTimer = () => {
+    console.log(intervalId);
+    if (intervalId.current) {
+      clearInterval(intervalId.current);
+    }
+  };
+
+  const finish = () => {
+    reset();
+  }
 
   return (
     <View style={styles.container}>
       <View style={{ flex: 1 }}>
         <Text style={styles.welcomeHeader}>{i18n.HOME.WELCOME_HEADER}</Text>
       </View>
-      <View style={{ flex: 2, alignItems: 'center', justifyContent: 'space-between' }}>
+      <View style={styles.buttonView}>
         <StopwatchButton
           time={state.time}
           paused={state.paused}
           onStart={startTimer}
           onPause={pauseTimer}
         />
-        <TouchableOpacity>
-  <Text style={styles.finishButton}>{i18n.HOME.FINISH}</Text>
+        <TouchableOpacity onPress={finish}>
+          <Text style={styles.finishButton}>{i18n.HOME.FINISH}</Text>
         </TouchableOpacity>
       </View>
     </View>
