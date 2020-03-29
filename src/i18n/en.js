@@ -5,6 +5,7 @@ const i18n = {
     START: 'START',
     PAUSE: 'PAUSE',
     PAUSED: 'PAUSED',
+    FINISH: 'FINISH',
   },
 };
 

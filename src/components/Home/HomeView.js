@@ -70,7 +70,7 @@ const HomeView = () => {
           onPause={pauseTimer}
         />
         <TouchableOpacity>
-          <Text style={styles.finishButton}>Finish</Text>
+  <Text style={styles.finishButton}>{i18n.HOME.FINISH}</Text>
         </TouchableOpacity>
       </View>
     </View>
