@@ -13,7 +13,6 @@ const HomeView = () => {
   });
 
   const handleAppStateChange = async (nextAppState) => {
-    console.log(nextAppState);
     const now = new Date().getTime();
     const { time } = state;
     const readTime = await AsyncStorage.getItem('@time');
@@ -34,7 +33,7 @@ const HomeView = () => {
     AppState.addEventListener('change', handleAppStateChange);
 
     return () => AppState.removeEventListener('change', handleAppStateChange);
-  }, []);
+  }, [handleAppStateChange]);
 
   const startTimer = () => {
     setInterval(() => {
