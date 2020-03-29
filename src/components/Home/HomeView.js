@@ -12,6 +12,8 @@ const HomeView = () => {
     paused: false,
   });
 
+  let intervalId;
+
   const handleAppStateChange = async (nextAppState) => {
     const now = new Date().getTime();
     const { time } = state;
@@ -36,7 +38,11 @@ const HomeView = () => {
   }, [handleAppStateChange]);
 
   const startTimer = () => {
-    setInterval(() => {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+
+    intervalId = setInterval(() => {
       setState((prevState) => ({ ...prevState, time: prevState.paused ? prevState.time : prevState.time + 1000 }));
     }, 1000);
   };
