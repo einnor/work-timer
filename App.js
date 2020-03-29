@@ -16,6 +16,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeView from './src/components/Home/HomeView';
+import FinishView from './src/components/Finish/FinishView';
 
 const Stack = createStackNavigator();
 
@@ -27,6 +28,7 @@ const App = () => {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="Home" component={HomeView} />
+            <Stack.Screen name="Finish" component={FinishView} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
