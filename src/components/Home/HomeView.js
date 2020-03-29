@@ -22,14 +22,18 @@ const HomeView = () => {
     const timeDifference = now - parseInt(readtAppStateChangedTimestamp, 10);
     const newTime = parseInt(readTime, 10) + timeDifference;
 
+    if (nextAppState === 'active') {
+      setState((prevState) => ({ ...prevState, time: newTime }));
+    }
+
     await AsyncStorage.setItem('@time', time);
     await AsyncStorage.setItem('@appStateChangedTimestamp', now);
   }
 
   useEffect(() => {
-    AppState.addEventListener('appStateChange', handleAppStateChange);
+    AppState.addEventListener('change', handleAppStateChange);
 
-    return () => AppState.removeEventListener('appStateChange', handleAppStateChange);
+    return () => AppState.removeEventListener('change', handleAppStateChange);
   }, []);
 
   const startTimer = () => {
