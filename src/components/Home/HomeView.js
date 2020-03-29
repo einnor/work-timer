@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, AppState } from 'react-native';
 
 import i18n from '../../i18n/en';
 import styles from './HomeViewStyles';
@@ -10,6 +10,16 @@ const HomeView = () => {
     time: 0,
     paused: false,
   });
+
+  const handleAppStateChange = (nextAppState) => {
+    console.log(nextAppState);
+  }
+
+  useEffect(() => {
+    AppState.addEventListener('change', handleAppStateChange);
+
+    return () => AppState.removeEventListener('change', handleAppStateChange);
+  }, []);
 
   const startTimer = () => {
     setInterval(() => {
