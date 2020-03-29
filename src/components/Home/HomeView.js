@@ -61,7 +61,6 @@ const HomeView = () => {
   };
 
   const clearTimer = () => {
-    console.log(intervalId);
     if (intervalId.current) {
       clearInterval(intervalId.current);
     }
@@ -83,9 +82,13 @@ const HomeView = () => {
           onStart={startTimer}
           onPause={pauseTimer}
         />
-        <TouchableOpacity onPress={finish}>
-          <Text style={styles.finishButton}>{i18n.HOME.FINISH}</Text>
-        </TouchableOpacity>
+        {
+          state.time > 0 && (
+            <TouchableOpacity onPress={finish}>
+              <Text style={styles.finishButton}>{i18n.HOME.FINISH}</Text>
+            </TouchableOpacity>
+          )
+        }
       </View>
     </View>
   );
