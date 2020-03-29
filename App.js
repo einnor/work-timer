@@ -6,25 +6,33 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   StatusBar,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
 import HomeView from './src/components/Home/HomeView';
 
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <Fragment>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.container}>
-        <HomeView />
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeView} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </SafeAreaView>
     </Fragment>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
