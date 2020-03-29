@@ -6,7 +6,7 @@ import i18n from '../../i18n/en';
 import styles from './HomeViewStyles';
 import StopwatchButton from '../StopwatchButton/StopWatchButton';
 
-const HomeView = () => {
+const HomeView = ({ navigation }) => {
   const [state, setState] = useState({
     time: 0,
     paused: false,
@@ -68,6 +68,7 @@ const HomeView = () => {
 
   const finish = () => {
     reset();
+    navigation.navigate('Finish');
   }
 
   return (
