@@ -16,7 +16,7 @@ const HomeView = () => {
 
   const handleAppStateChange = async (nextAppState) => {
     const now = new Date().getTime();
-    const { time } = state;
+    const { time, paused } = state;
     const readTime = await AsyncStorage.getItem('@time');
     const readtAppStateChangedTimestamp = await AsyncStorage.getItem('@appStateChangedTimestamp');
 
@@ -24,11 +24,17 @@ const HomeView = () => {
     const newTime = parseInt(readTime, 10) + timeDifference;
 
     if (nextAppState === 'active') {
-      setState((prevState) => ({ ...prevState, time: newTime }));
+      const isPaused = JSON.parse(await AsyncStorage.getItem('@isPaused'));
+      console.log(isPaused);
+      if (!isPaused) {
+        setState((prevState) => ({ ...prevState, time: newTime }));
+        startTimer();
+      } else {
+        await AsyncStorage.setItem('@isPaused', JSON.stringify(paused));
+        await AsyncStorage.setItem('@time', time.toString());
+        await AsyncStorage.setItem('@appStateChangedTimestamp', now.toString());
+      }
     }
-
-    await AsyncStorage.setItem('@time', time.toString());
-    await AsyncStorage.setItem('@appStateChangedTimestamp', now.toString());
   }
 
   useEffect(() => {
