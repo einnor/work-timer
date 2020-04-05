@@ -3,6 +3,8 @@ import { View, Text, AsyncStorage } from 'react-native';
 import moment from 'moment';
 import i18n from '../../i18n/en';
 
+import styles from './HistoryViewStyles';
+
 const HistoryView = () => {
   const [activities, setActivities] = useState([]);
   const getActivities = async () => {
@@ -16,16 +18,16 @@ const HistoryView = () => {
 
   const renderItem = ({ item }) => {
     return (
-      <View>
-        <View>
-          <Text>{item.name}</Text>
+      <View style={styles.container}>
+        <View style={styles.itemNameContainer}>
+          <Text style={styles.itemNameText}>{item.name}</Text>
         </View>
-        <View>
+        <View style={styles.itemDetailsContainer}>
           <View>
-            <Text>{moment.utc(item.date).format(i18n.DATE_FORMAT)}</Text>
+            <Text style={styles.itemDetailsText}>{moment.utc(item.date).format(i18n.DATE_FORMAT)}</Text>
           </View>
           <View>
-            <Text>{moment.utc(item.timeSpent).format(i18n.TIME_FORMAT)}</Text>
+            <Text style={styles.itemDetailsText}>{moment.utc(item.timeSpent).format(i18n.TIME_FORMAT)}</Text>
           </View>
         </View>
       </View>
@@ -33,7 +35,7 @@ const HistoryView = () => {
   };
   return (
     <>
-      <Text>{i18n.HISTORY.SAVED_ACTIVITIES}</Text>
+      <Text style={styles.header}>{i18n.HISTORY.SAVED_ACTIVITIES}</Text>
       <FlatList
         data={activities}
         renderItem={renderItem}
