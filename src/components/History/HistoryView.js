@@ -16,7 +16,11 @@ const HistoryView = () => {
     return (
       <View>
         <View>
-          <Text>{DataTransferItem.name}</Text>
+          <Text>{item.name}</Text>
+        </View>
+        <View>
+          <Text>{item.date}</Text>
+          <Text>{item.timeSpent}</Text>
         </View>
       </View>
     );
