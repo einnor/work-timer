@@ -23,6 +23,10 @@ const FinishView = ({ navigation, route }) => {
     navigation.goBack();
   };
 
+  const onCancel = () => {
+    navigation.goBack();
+  }
+
   return (
     <View>
       <Text>Finished</Text>
