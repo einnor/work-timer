@@ -21,7 +21,20 @@ const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: '6d6d6d',
+        inactiveTintColor: 'a3a3a3',
+        labelStyle: {
+          fontSize: 30,
+        },
+        style: {
+          backgroundColot: '#e0e0e0',
+          borderColor: 'rgba(140, 149, 140, 0.8)',
+          borderTopWidth: 1,
+        },
+      }}
+    >
       <Tab.Screen name="Home" component={HomeStackScreen} />
       <Tab.Screen name="History" component={HistoryView} />
     </Tab.Navigator>
