@@ -8,6 +8,9 @@ const i18n = {
     PAUSED: 'PAUSED',
     FINISH: 'FINISH',
   },
+  HISTORY: {
+    SAVED_ACTIVITIES: 'Saved Activities',
+  },
 };
 
 export default i18n;

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, AsyncStorage } from 'react-native';
+import moment from 'moment';
+import i18n from '../../i18n/en';
 
 const HistoryView = () => {
   const [activities, setActivities] = useState([]);
@@ -19,15 +21,19 @@ const HistoryView = () => {
           <Text>{item.name}</Text>
         </View>
         <View>
-          <Text>{item.date}</Text>
-          <Text>{item.timeSpent}</Text>
+          <View>
+            <Text>{moment.utc(item.date).format(i18n.DATE_FORMAT)}</Text>
+          </View>
+          <View>
+            <Text>{moment.utc(item.timeSpent).format(i18n.TIME_FORMAT)}</Text>
+          </View>
         </View>
       </View>
     );
   };
   return (
     <>
-      <Text>Saved Activities</Text>
+      <Text>{i18n.HISTORY.SAVED_ACTIVITIES}</Text>
       <FlatList
         data={activities}
         renderItem={renderItem}
