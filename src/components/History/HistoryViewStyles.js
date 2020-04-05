@@ -7,16 +7,26 @@ const styles = StyleSheet.create({
     borderBottomColor: '#eaeaea',
     padding: 13,
     height: 60,
-  },
-  historyItemNameText: {
+	},
+	itemNameContainer: {
+		flex: 4,
+	},
+  itemNameText: {
     fontSize: 18,
   },
-  historyItemDetailsContainer: {
+  itemDetailsContainer: {
 		flex: 2,
 		alignItems: 'flex-end',
 		flexDirection: 'column',
 		justifyContent: 'space-between',
-  },
+	},
+	itemDetailsText: {
+		fontSize: 14,
+	},
+	header: {
+		fontSize: 40,
+		textAlign: 'center',
+	},
 });
 
 export default styles;
