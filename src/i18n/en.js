@@ -11,6 +11,9 @@ const i18n = {
   HISTORY: {
     SAVED_ACTIVITIES: 'Saved Activities',
   },
+  FINISH: {
+    MAIN_HEADER: '',
+  }
 };
 
 export default i18n;

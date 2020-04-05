@@ -7,6 +7,8 @@ import ActionButton from '../ActionButton/ActionButton';
 import i18n from '../../i18n/en';
 import { ACTIVITY_STORAGE_KEY} from '../../config/constants';
 
+import styles from './FinishViewStyles';
+
 const FinishView = ({ navigation, route }) => {
   const { timeSpent } = route.params;
   const [name, setName] = useState('');
@@ -28,8 +30,10 @@ const FinishView = ({ navigation, route }) => {
   }
 
   return (
-    <View>
-      <Text>Finished</Text>
+    <View style={styles.container}>
+      <View>
+        <Text style={styles.header}>{i18n.FINISH.MAIN_HEADER}</Text>
+      </View>
     </View>
   );
 };
