@@ -31,7 +31,7 @@ const FinishView = ({ navigation, route }) => {
   }
 
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row', flex: 1 }}>
       <View style={{ flex: 0.1 }} />
       <View style={styles.container}>
         <View style={styles.headerContainer}>

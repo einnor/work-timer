@@ -18,8 +18,8 @@ const HomeView = ({ navigation }) => {
   const handleAppStateChange = async (nextAppState) => {
     const now = new Date().getTime();
     const { time, paused } = state;
-    const readTime = await AsyncStorage.getItem(TIME_STORAGE_KEY);
-    const readtAppStateChangedTimestamp = await AsyncStorage.getItem(APP_STATE_TIMESTAMP_STORAGE_KEY);
+    const readTime = await AsyncStorage.getItem(TIME_STORAGE_KEY) || 0;
+    const readtAppStateChangedTimestamp = await AsyncStorage.getItem(APP_STATE_TIMESTAMP_STORAGE_KEY) || 0;
 
     const timeDifference = now - parseInt(readtAppStateChangedTimestamp, 10);
     const newTime = parseInt(readTime, 10) + timeDifference;

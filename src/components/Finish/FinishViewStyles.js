@@ -6,12 +6,13 @@ const styles = StyleSheet.create({
 	},
 	headerContainer: {
 		flex: 4,
-		justifyContent: 'space-between',
+		justifyContent: 'center',
 		alignItems: 'center',
 	},
 	header: {
 		fontSize: 40,
 		textAlign: 'center',
+		flex: 0.5,
 	},
 	subHeader: {
 		fontSize: 40,
