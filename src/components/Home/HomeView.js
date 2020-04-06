@@ -69,7 +69,7 @@ const HomeView = ({ navigation }) => {
 
   const finish = () => {
     reset();
-    navigation.navigate('Finish', { timeSpent: time });
+    navigation.navigate('Finish', { timeSpent: state.time });
   }
 
   return (

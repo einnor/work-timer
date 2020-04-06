@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import moment from 'moment';
+import AsyncStorage from '@react-native-community/async-storage';
 import i18n from '../../i18n/en';
 import { ACTIVITY_STORAGE_KEY } from '../../config/constants';
 
