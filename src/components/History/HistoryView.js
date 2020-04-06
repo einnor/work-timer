@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, AsyncStorage } from 'react-native';
 import moment from 'moment';
 import i18n from '../../i18n/en';
+import { ACTIVITY_STORAGE_KEY } from '../../config/constants';
 
 import styles from './HistoryViewStyles';
 
 const HistoryView = () => {
   const [activities, setActivities] = useState([]);
   const getActivities = async () => {
-    const activities = JSON.parse(await AsyncStorage.getItem('@activities')) || [];
+    const activities = JSON.parse(await AsyncStorage.getItem(ACTIVITY_STORAGE_KEY)) || [];
     setActivities(activities);
   };
 
