@@ -30,10 +30,14 @@ const FinishView = ({ navigation, route }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.header}>{i18n.FINISH.MAIN_HEADER}</Text>
+    <View style={{ flexDirection: 'row' }}>
+      <View style={{ flex: 0.1 }} />
+      <View style={styles.container}>
+        <View>
+          <Text style={styles.header}>{i18n.FINISH.MAIN_HEADER}</Text>
+        </View>
       </View>
+      <View style={{ flex: 0.1 }} />
     </View>
   );
 };
