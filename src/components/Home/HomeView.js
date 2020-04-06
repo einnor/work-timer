@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import i18n from '../../i18n/en';
 import styles from './HomeViewStyles';
+import { APP_STATE_TIMESTAMP_STORAGE_KEY, TIME_STORAGE_KEY, IS_PAUSED_STORAGE_KEY } from '../../config/constants';
 import StopwatchButton from '../StopwatchButton/StopWatchButton';
 
 const HomeView = ({ navigation }) => {
@@ -17,20 +18,20 @@ const HomeView = ({ navigation }) => {
   const handleAppStateChange = async (nextAppState) => {
     const now = new Date().getTime();
     const { time, paused } = state;
-    const readTime = await AsyncStorage.getItem('@time');
-    const readtAppStateChangedTimestamp = await AsyncStorage.getItem('@appStateChangedTimestamp');
+    const readTime = await AsyncStorage.getItem(TIME_STORAGE_KEY);
+    const readtAppStateChangedTimestamp = await AsyncStorage.getItem(APP_STATE_TIMESTAMP_STORAGE_KEY);
 
     const timeDifference = now - parseInt(readtAppStateChangedTimestamp, 10);
     const newTime = parseInt(readTime, 10) + timeDifference;
 
     if (nextAppState === 'active') {
-      const isPaused = JSON.parse(await AsyncStorage.getItem('@isPaused'));
+      const isPaused = JSON.parse(await AsyncStorage.getItem(IS_PAUSED_STORAGE_KEY));
       if (!isPaused) {
         setState((prevState) => ({ ...prevState, time: newTime }));
       } else {
-        await AsyncStorage.setItem('@isPaused', JSON.stringify(paused));
-        await AsyncStorage.setItem('@time', time.toString());
-        await AsyncStorage.setItem('@appStateChangedTimestamp', now.toString());
+        await AsyncStorage.setItem(IS_PAUSED_STORAGE_KEY, JSON.stringify(paused));
+        await AsyncStorage.setItem(TIME_STORAGE_KEY, time.toString());
+        await AsyncStorage.setItem(APP_STATE_TIMESTAMP_STORAGE_KEY, now.toString());
       }
     }
   }
