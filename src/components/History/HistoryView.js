@@ -10,7 +10,7 @@ const HistoryView = () => {
   const [activities, setActivities] = useState([]);
   const getActivities = async () => {
     const activities = JSON.parse(await AsyncStorage.getItem(ACTIVITY_STORAGE_KEY)) || [];
-    setActivities(activities);
+    setActivities(activities.reverse());
   };
 
   useEffect(() => {
