@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
 	subHeader: {
 		fontSize: 40,
 		textAlign: 'center',
-		flex: 0.5,
 	},
 	activityNameLabel: {
 		fontSize: 16,

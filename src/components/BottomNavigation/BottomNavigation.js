@@ -23,8 +23,8 @@ const BottomNavigation = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: '6d6d6d',
-        inactiveTintColor: 'a3a3a3',
+        activeTintColor: '#6d6d6d',
+        inactiveTintColor: '#a3a3a3',
         labelStyle: {
           fontSize: 30,
         },
