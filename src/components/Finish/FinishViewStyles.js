@@ -4,19 +4,19 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 0.8,
 	},
-	innerContainer: {
+	headerContainer: {
 		flex: 4,
 		justifyContent: 'space-between',
+		alignItems: 'center',
 	},
 	header: {
 		fontSize: 40,
 		textAlign: 'center',
-		flex: 2,
 	},
 	subHeader: {
 		fontSize: 40,
 		textAlign: 'center',
-		flex: 2,
+		flex: 0.5,
 	},
 	activityNameLabel: {
 		fontSize: 16,

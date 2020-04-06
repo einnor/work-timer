@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
+import { TextInput } from 'react-native-gesture-handler';
 import moment from 'moment';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -33,10 +34,35 @@ const FinishView = ({ navigation, route }) => {
     <View style={{ flexDirection: 'row' }}>
       <View style={{ flex: 0.1 }} />
       <View style={styles.container}>
-        <View>
+        <View style={styles.headerContainer}>
           <Text style={styles.header}>{i18n.FINISH.MAIN_HEADER}</Text>
+          <Text style={styles.subHeader}>{moment.utc(timeSpent).format(i18n.TIME_FORMAT)}</Text>
         </View>
-      </View>
+        <View style={{ flex: 1 }}>
+          <Text style={styles.activityNameLabel}>{i18n.FINISH.ACTIVITY_NAME_LABEL}</Text>
+          <TextInput
+            style={styles.activityNameInput}
+            value={name}
+            onChangeText={(txt) => setName(txt)}
+          />
+        </View>
+        <View style={{ flex: 5 }}>
+            <View style={styles.actionButtonsContainer}>
+              <ActionButton
+                onPress={onCancel}
+                label={i18n.CANCEL}
+                backgroundColor={'#F39527'}
+                textColor={'#fff'}
+              />
+              <ActionButton
+                onPress={onSave}
+                label={i18n.SAVE}
+                backgroundColor={'#00CD5E'}
+                textColor={'#fff'}
+                />
+            </View>
+          </View>
+        </View>
       <View style={{ flex: 0.1 }} />
     </View>
   );
